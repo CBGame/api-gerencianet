@@ -9,7 +9,7 @@ const GNRequest = require("./src/apis/gerencianet");
 const app = express();
 app.use(bodyParser.json());
 
-app.post("/payments/cob/pix", async (req, res) => {
+app.post("/", async (req, res) => {
   const reqGN = await GNRequest({
     clientID: process.env.GN_CLIENT_ID,
     clientSecret: process.env.GN_CLIENT_SECRET,
