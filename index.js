@@ -50,7 +50,7 @@ app.post("/webhook(/pix)?", async (req, res) => {
   console.log(req.body);
   const { pix } = req.body;
   try {
-    return console.log("sucess");
+    return console.log(pix);
   } catch (error) {
     console.log(error);
   }
