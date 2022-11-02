@@ -15,6 +15,7 @@ app.post("/", async (req, res) => {
     clientSecret: process.env.GN_CLIENT_SECRET,
   });
   const { fullname, expire, amount, cpf, user } = req.body;
+
   const dataCob = {
     calendario: {
       expiracao: expire,
@@ -49,9 +50,7 @@ app.post("/", async (req, res) => {
 
 app.post("/webhook(/pix)?", async (req, res) => {
   console.log(req.body);
-  const { pix } = req.body;
-  return console.log(pix);
-  res.send(200);
+  return res.send(200);
 });
 
 app.listen(8000, () => console.log("server running"));
