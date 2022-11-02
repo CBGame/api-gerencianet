@@ -14,7 +14,7 @@ app.post("/", async (req, res) => {
     clientID: process.env.GN_CLIENT_ID,
     clientSecret: process.env.GN_CLIENT_SECRET,
   });
-  const { fullname, expire, amount, cpf } = req.body;
+  const { fullname, expire, amount, cpf, user } = req.body;
   const dataCob = {
     calendario: {
       expiracao: expire,
@@ -37,6 +37,7 @@ app.post("/", async (req, res) => {
   );
 
   const data = {
+    user,
     total: amount,
     qrcode: qrcodeResponse.data,
     status: "pending",
