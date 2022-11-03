@@ -10,7 +10,7 @@ const app = express();
 app.use(bodyParser.json());
 
 app.post("/", async (req, res) => {
-  const reqGN = GNRequest({
+  const reqGN = await GNRequest({
     clientID: process.env.GN_CLIENT_ID,
     clientSecret: process.env.GN_CLIENT_SECRET,
   });
