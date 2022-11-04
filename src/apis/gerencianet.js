@@ -2,6 +2,7 @@ const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 const https = require("https");
+const { addHours, isAfter } = require("date-fns");
 
 const cert = fs.readFileSync(
   path.resolve(__dirname, `../../certs/${process.env.GN_CERT}`)
@@ -32,7 +33,7 @@ const authenticate = ({ clientID, clientSecret }) => {
 };
 
 async function getToken(credentials) {
-  const authResponse = await authenticated(credentials);
+  const authResponse = await authenticate(credentials);
   const authData = Object.create(null);
   const createdAt = Date.now();
   authData.accessToken = authResponse.data?.access_token;
