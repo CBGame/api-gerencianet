@@ -31,13 +31,24 @@ const authenticate = ({ clientID, clientSecret }) => {
   });
 };
 
-const GNRequest = async (credentials) => {
-  const authResponse = await authenticate(credentials);
-  const accessToken = authResponse.data?.access_token;
+async function getToken(credentials) {
+  const authResponse = await authenticated(credentials);
+  const authData = Object.create(null);
+  const createdAt = Date.now();
+  authData.accessToken = authResponse.data?.access_token;
+  authData.createdAt = createdAt;
+  console.log(authData);
+  return authData;
+}
 
-  setTimeout(async () => {
-    GNRequest(credentials);
-  }, 3600000);
+const GNRequest = async (credentials) => {
+  const { accessToken, createdAt } = await getToken(credentials);
+
+  const compareDate = addHours(createdAt, 1);
+
+  if (isAfter(Date.now(), compareDate)) {
+    return getToken(credentials);
+  }
 
   return axios.create({
     baseURL: process.env.GN_ENDPOINT,
