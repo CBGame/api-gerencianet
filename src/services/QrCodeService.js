@@ -41,10 +41,10 @@ class QrCodeService {
     };
 
     const cobResponse = await reqGN.post("/v2/cob", dataCob);
-
-    return await reqGN
-      .get(`/v2/loc/${cobResponse.data.loc.id}/qrcode`)
-      .then((resp) => resp);
+    const qrCodeResponse = await reqGN.get(
+      `/v2/loc/${cobResponse.data.loc.id}/qrcode`
+    );
+    return { cob: cobResponse.data, qrcode: qrCodeResponse.data };
   }
 }
 
