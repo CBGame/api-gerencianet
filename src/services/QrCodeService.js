@@ -8,7 +8,7 @@ let token;
 let create;
 
 class QrCodeService {
-  static async execute({ amount, cpf, fullname }) {
+  static async execute({ amount, cpf, fullname, expire }) {
     const { accessToken, createdAt } = await authData;
 
     token = accessToken;
@@ -27,7 +27,7 @@ class QrCodeService {
 
     const dataCob = {
       calendario: {
-        expiracao: 3600,
+        expiracao: expire,
       },
       devedor: {
         cpf: cpf,

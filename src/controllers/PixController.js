@@ -9,19 +9,21 @@ const {
 
 class pixController {
   static async qrcodeGen(req, res) {
-    const { cpf, amount, fullname, user } = req.body;
+    const { cpf, amount, fullname, user, expire } = req.body;
     try {
-      await QrCodeService.execute({ amount, cpf, fullname }).then((resp) => {
-        const data = {
-          user,
-          total: amount,
-          qrcode: resp.data.qrcode,
-          status: "pending",
-          txid: resp.data.txid,
-        };
+      await QrCodeService.execute({ amount, cpf, fullname, expire }).then(
+        (resp) => {
+          const data = {
+            user,
+            total: amount,
+            qrcode: resp.data.qrcode,
+            status: "pending",
+            txid: resp.data.txid,
+          };
 
-        return res.status(200).send(data);
-      });
+          return res.status(200).send(data);
+        }
+      );
     } catch (err) {
       res.status(400).send(err.message);
     }
