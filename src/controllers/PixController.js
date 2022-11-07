@@ -16,7 +16,7 @@ class pixController {
           const data = {
             user,
             total: amount,
-            qrcode: resp.qrcodex,
+            qrcode: resp.qrcode,
             status: "pending",
             txid: resp.cob.txid,
           };
