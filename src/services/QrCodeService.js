@@ -37,7 +37,7 @@ class QrCodeService {
         original: amount?.toFixed(2),
       },
       chave: "33d8e947-4ccf-4193-a5bc-33e0a08ce9ed",
-      solicitacaoPagador: "",
+      solicitacaoPagador: "Payment Bicho da Sorte🍀",
     };
 
     const cobResponse = await reqGN.post("/v2/cob", dataCob);
