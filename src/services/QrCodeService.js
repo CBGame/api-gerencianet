@@ -44,6 +44,9 @@ class QrCodeService {
     const qrCodeResponse = await reqGN.get(
       `/v2/loc/${cobResponse.data.loc.id}/qrcode`
     );
+
+    console.log(qrCodeResponse);
+
     return { cob: cobResponse.data, qrcode: qrCodeResponse.data };
   }
 }
