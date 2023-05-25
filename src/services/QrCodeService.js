@@ -36,7 +36,7 @@ class QrCodeService {
       valor: {
         original: amount?.toFixed(2),
       },
-      chave: "c539a4a9-d2ae-48bf-8147-e1896886e4b2",
+      chave: "3e4639c6-3267-4335-8c01-d309525e21ec",
       solicitacaoPagador: "Payment Bicho da Sorte🍀",
     };
 
