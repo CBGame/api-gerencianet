@@ -27,7 +27,7 @@ app.get("/cobrancas", async (req, res) => {
 app.post("/webhook(/pix)?", async (req, res) => {
   const { pix } = req.body;
   console.log(pix)
-  return res.send(200);
+  return res.sendStatus(200);
 });
 
 app.listen(8000, () => console.log("running"));
