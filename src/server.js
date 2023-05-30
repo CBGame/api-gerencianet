@@ -26,10 +26,7 @@ app.get("/cobrancas", async (req, res) => {
 
 app.post("/webhook(/pix)?", async (req, res) => {
   const { pix } = req.body;
-  await axios.post("https://us-central1-cbgjogo.cloudfunctions.net/api/pix", {
-    pix,
-  });
-
+  console.log(pix)
   return res.send(200);
 });
 
